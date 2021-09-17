@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script type="module" src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>
+</head>
+<body>
+    <rapi-doc
+      spec-url="dist.yaml"
+      show-header="false"
+      allow-authentication="false"
+      allow-server-selection="false"
+      primary-color="#50A6C2"
+      font-size="large"
+      
+      <slot name="nav-logo">
+        <img src="logo.png"/>
+      </slot>
+      
+    </rapi-doc>
+</body>
+</html>

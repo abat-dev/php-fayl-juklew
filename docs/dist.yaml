@@ -1,0 +1,71 @@
+openapi: 3.0.2
+info:
+  version: 0.1
+  title: Upload (Júklew)
+  contact:
+    email: abat.dauletbayev@gmail.com
+    url: 'http://dauletbaev.com/contact'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: 'https://upload.xvest.ru/docs/logo.png'
+  description: >
+    > Bul "**upload**" API ınıń dokumentaciysı.
+
+    # Kirisiw
+
+    Bul API járdeminde siz kishi kólemdegi fayllardı bultqa (yaǵnıy biziń
+    serverimizge) júklewińiz múmkin.
+
+    Maksimal fayl kólemi **2 MB**.
+paths:
+  /:
+    post:
+      summary: Fayldı júklew
+      description: Fayl júklew
+      operationId: upload
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Fayl áwmetli túrde júklendi.
+                  src:
+                    type: string
+                    example: static/2021-09-17/new_file_name.ext
+                  url:
+                    type: string
+                    example: 'https://example.com/static/2021-09-17/new_file_name.ext'
+        '500':
+          description: Serverde qátelik.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: int
+                    example: 500
+                  message:
+                    type: string
+                    example: Fayldı júklewde serverde nasazlıq.
+      requestBody:
+        description: Fayldı jiberiń (Maksimal fayl kólemi **2 MB**).
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+servers:
+  - url: 'https://upload.xvest.ru/'
+components: {}
